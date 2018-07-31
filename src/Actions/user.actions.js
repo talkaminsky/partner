@@ -8,7 +8,8 @@ export const userActions = {
     logout,
     register,
     getAll,
-    delete: _delete
+    deleteUser,
+    getById
 };
 
 function login(email, password) {
@@ -19,7 +20,7 @@ function login(email, password) {
             .then(
                 user => {
                     dispatch(success(user));
-                    history.push('/');
+                    history.push('/profile');
                 },
                 error => {
                     dispatch(failure(error.toString()));
@@ -61,6 +62,22 @@ function register(user) {
     function failure(error) { return { type: userConstants.REGISTER_FAILURE, error } }
 }
 
+function getById(id) {
+    return dispatch => {
+        dispatch(request(id));
+
+        userService.getById(id)
+            .then(
+                user => dispatch(success(user)),
+                error => dispatch(failure(id, error.toString()))
+            );
+    };
+
+    function request(id) { return { type: userConstants.GET_BY_ID_REQUEST, id } }
+    function success(user) { return { type: userConstants.GET_BY_ID_SUCCESS, user } }
+    function failure(id, error) { return { type: userConstants.GET_BY_ID_FAILURE, id, error } }
+}
+
 function getAll() {
     return dispatch => {
         dispatch(request());
@@ -77,14 +94,13 @@ function getAll() {
     function failure(error) { return { type: userConstants.GETALL_FAILURE, error } }
 }
 
-// prefixed function name with underscore because delete is a reserved word in javascript
-function _delete(id) {
+function deleteUser(id) {
     return dispatch => {
         dispatch(request(id));
 
         userService.delete(id)
             .then(
-                user => dispatch(success(id)),
+                id => dispatch(success(id)),
                 error => dispatch(failure(id, error.toString()))
             );
     };

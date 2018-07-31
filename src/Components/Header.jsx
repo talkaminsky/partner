@@ -21,7 +21,7 @@ class Header extends React.Component {
         return (
             <header>
                 <a className="go-back-link" onClick={history.goBack}><i className="fa fa-arrow-left"></i></a>
-                <h1 className="page-title">{this.state.title}</h1>
+                <h1 className="page-title">{this.state.title ? this.state.title : 'Profile'}</h1>
                 <div className="navi-menu-button">
                     <em></em>
                     <em></em>

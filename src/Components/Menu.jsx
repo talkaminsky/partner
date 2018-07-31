@@ -8,10 +8,10 @@ class Menu extends React.Component {
 
     render() {
         return (
-           <div class="nav-menu">
+           <div className="nav-menu">
                <nav className="menu">
                    <div className="nav-header">
-                       <a href="home.html"><img src="img/app-logo.png" width="160" /></a>
+                       <a href="home.html"><img src="../Template/img/app-logo.png" width="160" /></a>
                    </div>
                    <div className="nav-container">
                        <ul className="main-menu">

@@ -1213,8 +1213,8 @@ select.form-element{
 	width: auto;
 	display: inline-block;
 	white-space: nowrap;
-	left: -130px;
-	width: 130px;
+	left: -85px;
+	width: 85px;
 	border:solid 1px #EEE;
 	border-radius: 5px;
 	background: #FFF;

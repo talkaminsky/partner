@@ -28,6 +28,8 @@ build/Release
 
 # Dependency directories
 node_modules
+.idea
+dist
 jspm_packages
 typings
 

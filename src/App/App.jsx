@@ -7,6 +7,7 @@ import { PrivateRoute, Header, Menu} from '../Components';
 import { HomePage } from '../HomePage';
 import { LoginPage } from '../LoginPage';
 import { RegisterPage } from '../RegisterPage';
+import { ProfilePage } from '../ProfilePage';
 
 class App extends React.Component {
     constructor(props) {
@@ -17,7 +18,6 @@ class App extends React.Component {
         history.listen((location, action) => {
             dispatch(alertActions.clear());
         });
-
     }
 
     render() {
@@ -32,9 +32,12 @@ class App extends React.Component {
                 <div className="wrapper-inline">
                     <Router history={history}>
                         <div>
-                            <PrivateRoute exact path="/" component={HomePage} />
+                            <PrivateRoute exact path="/" component={ProfilePage} />
+                            <PrivateRoute exact path="/profile" component={ProfilePage} />
+                            <PrivateRoute exact path="/home" component={HomePage} />
                             <Route path="/login" component={LoginPage} />
                             <Route path="/register" component={RegisterPage} />
+
                         </div>
                     </Router>
                 </div>
